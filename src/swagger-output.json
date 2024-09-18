@@ -1,0 +1,373 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Google keep",
+    "description": "This is the replica of google keep.User can register and login, user can do request for forgot password and he can reset password using that shared credentionals. User can login and perform note CRUD.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/getAllUser": {
+
+      "get": {
+        "summary": "Get all the user",
+        "description": "Fetching all the user from Db",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "summary": "register/signup the user",
+        "description": "Register the user and saving the credentials in Db",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/forgotpassword": {
+      "get": {
+        "summary": "Forgot password",
+        "description": "write the correct email for getting the token for resetting password",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                }
+              
+              }
+            }
+          }
+        ],
+      
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/resetpassword/{_id}": {
+      "get": {
+        "summary": "resetpassword",
+        "description": "resetting the existing password with new password.",
+        "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+          
+                  "password": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "summary": "login user",
+        "description": "login user to get the access to all the notes",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/getuser/{_id}": {
+      "get": {
+        "summary": "Find user by ID",
+        "description": "Returns a single user",
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "ID of user to return",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/edituser/{_id}": {
+      "patch": {
+        "summary": "Find and update user by ID",
+        "description": "Returns a updated user",
+        "operationId": "updateUserById",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "ID of updated user to return",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/deleteuser/{_id}": {
+      "delete": {
+        "summary": "delete user by ID",
+        "description": "Returns null",
+        "operationId": "deleteUserById",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "ID of user to return",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/getAllNotes": {
+      "get": {
+        "summary": "get all notes",
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/createNotes": {
+      "post": {
+        "summary": "create notes",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "color": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/archive/{id}": {
+      "get": {
+        "summary": "archive notes",
+        "description": "",
+        "operationId": "archiveById",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/trash/{id}": {
+      "get": {
+        "summary": "trash note by ID",
+        "description": "",
+        "operationId": "trashNotes",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/getnote/{_id}": {
+      "get": {
+        "summary": "Find note by ID",
+        "description": "Returns a single note",
+        "operationId": "getNoteById",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "single note return",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/editnote/{_id}": {
+      "patch": {
+        "summary": "Find note and update by ID",
+        "description": "Returns a single updated note",
+        "operationId": "editnoteById",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "return updated note",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/deletenote/{_id}": {
+      "delete": {
+      "summary": "Find note and delete by ID",
+        "description": "",
+        "operationId": "deletenoteById",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  }
+}
